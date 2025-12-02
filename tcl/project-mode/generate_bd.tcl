@@ -3,7 +3,7 @@ source tcl/set_variables.tcl
 puts "INFO: Creating Block Design '${top_level}' with MicroBlaze RISC-V ..."
 
 # -----------------------------------------------------------------------------
-# Ensure project exists and BOARD_PART is set (critical for UART/reset automation)
+# Ensure project exists and BOARD_PART is set 
 # -----------------------------------------------------------------------------
 if {[current_project -quiet] eq ""} {
     puts "WARNING: No project open. Creating temporary project."
@@ -37,7 +37,7 @@ apply_bd_automation -rule xilinx.com:bd_rule:microblaze_riscv \
   } [get_bd_cells microblaze_riscv_0]
 
 # -----------------------------------------------------------------------------
-# ✅ CRITICAL: WAIT for clk_wiz_1 to be fully created (required in script mode)
+# WAIT for clk_wiz_1 to be fully created 
 # -----------------------------------------------------------------------------
 puts "INFO: Waiting for Clocking Wizard (clk_wiz_1) to be ready..."
 set retry 0
@@ -51,7 +51,7 @@ while {[get_bd_cells -quiet clk_wiz_1] eq ""} {
 puts "INFO: clk_wiz_1 is ready."
 
 # -----------------------------------------------------------------------------
-# ✅ CREATE sys_clock PORT MANUALLY and CONNECT DIRECTLY (NO board automation!)
+# sys_clock PORT MANUALLY and CONNECT DIRECTLY 
 # -----------------------------------------------------------------------------
 puts "INFO: Creating sys_clock port and connecting manually..."
 
